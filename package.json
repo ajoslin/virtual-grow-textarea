@@ -1,0 +1,54 @@
+{
+  "name": "virtual-grow-textarea",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Growable textarea for virtual-dom, backed by autosize",
+  "license": "MIT",
+  "repository": "ajoslin/virtual-grow-textarea",
+  "author": {
+    "name": "Andrew Joslin",
+    "email": "andrewtjoslin@gmail.com",
+    "url": "ajoslin.com"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "autosize",
+    "autogrow",
+    "grow",
+    "growing",
+    "textarea",
+    "textbox",
+    "virtual",
+    "virtual-dom"
+  ],
+  "devDependencies": {
+    "degree": "^1.1.1",
+    "dispatch-event": "^1.0.0",
+    "standard": "^6.0.0",
+    "tape": "^4.0.0",
+    "thermometer": "^1.4.0"
+  },
+  "files": [
+    "index.js",
+    "enter-event.js"
+  ],
+  "dependencies": {
+    "ap": "^0.2.0",
+    "append-hook": "^1.0.1",
+    "autosize": "^3.0.15",
+    "cuid": "^1.3.8",
+    "dover": "^1.2.0",
+    "next-tick": "^0.2.2",
+    "observ": "^0.2.0",
+    "observ-thunk": "^1.0.0",
+    "raf": "^3.2.0",
+    "remove-hook": "^1.0.0",
+    "value-event": "^5.1.0",
+    "virtual-dom": "^2.1.1",
+    "weakmap-event": "^2.0.6",
+    "weakmap-shim": "^1.1.0",
+    "xtend": "^4.0.1"
+  }
+}
