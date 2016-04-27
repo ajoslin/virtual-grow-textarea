@@ -77,7 +77,6 @@ function submit (state, data) {
 }
 
 var defaults = {
-  placeholder: '',
   rows: '1',
   enterSubmit: true
 }

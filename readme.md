@@ -52,7 +52,7 @@ A textarea state.
 
 Type: `object`
 
-`options` will be merged with the defaults (`{rows: '1', placholder: ''}`) and passed to [virtual-hyperscript](https://github.com/Matt-Esch/virtual-dom/tree/master/virtual-hyperscript).
+`options` will be merged with the defaults (`{rows: '1'}`) and passed to [virtual-hyperscript](https://github.com/Matt-Esch/virtual-dom/tree/master/virtual-hyperscript).
 
 Additionally, there are some options that affect the textarea's behavior:
 
