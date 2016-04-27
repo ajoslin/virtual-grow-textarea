@@ -67,7 +67,9 @@ var SubmitEvent = Event()
 Textarea.onSubmit = SubmitEvent.listen
 
 function input (state, data) {
-  state.value.set(data[data.name])
+  var value = data[data.name]
+  if (state.value() === value) return
+  state.value.set(value)
   InputEvent.broadcast(state, {})
 }
 
