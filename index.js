@@ -8,7 +8,7 @@ var valueEvent = require('value-event/value')
 var autosize = require('autosize')
 var AppendHook = require('append-hook')
 var RemoveHook = require('remove-hook')
-var createStore = require('weakmap-shim/create-store')
+var WeakStore = require('weakmap-shim/create-store')
 var extend = require('xtend')
 var ObservThunk = require('observ-thunk')
 var nextTick = require('next-tick')
@@ -17,7 +17,7 @@ var raf = require('raf')
 var cuid = require('cuid')
 var enterEvent = require('./enter-event')
 
-var store = createStore()
+var store = WeakStore()
 function noop () {}
 
 module.exports = Textarea
