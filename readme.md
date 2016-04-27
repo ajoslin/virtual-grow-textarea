@@ -58,7 +58,7 @@ Additionally, there are some options that affect the textarea's behavior:
 
 ###### options.enterSubmit
 
-Type: `boolean`\
+Type: `boolean`  
 Default: `true`
 
 If true, pressing enter will not grow the textarea, and instead will trigger `Textarea.onSubmit`.  The user will have to press `shift-enter` to grow the textarea.
@@ -71,14 +71,14 @@ Returns a function that removes the listener.
 
 ##### state
 
-*Required*\
+*Required*  
 Type: `function`
 
 An observable Textarea state.
 
 ##### listener
 
-*Required*\
+*Required*  
 Type: `function`
 
 A function that will be called when the user submits the textarea with enter while `options.enterSubmit` is set to true.
@@ -89,14 +89,14 @@ Returns a function that removes the listener.
 
 ##### state
 
-*Required*\
+*Required*  
 Type: `function`
 
 An observable Textarea state.
 
 ##### listener
 
-*Required*\
+*Required*  
 Type: `function`
 
 A function that will be called when the user inputs a value into the textarea.
@@ -107,7 +107,7 @@ Disables all listeners that the textarea creates internally.
 
 ##### state
 
-*Required*\
+*Required*  
 Type: `function`
 
 An observable Textarea state.
