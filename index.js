@@ -4,14 +4,13 @@ var State = require('dover')
 var Value = require('observ')
 var Event = require('weakmap-event')
 var h = require('virtual-dom/h')
-var valueEvent = require('value-event/value')
+var changeEvent = require('value-event/change')
 var autosize = require('autosize')
 var AppendHook = require('append-hook')
 var RemoveHook = require('remove-hook')
 var WeakStore = require('weakmap-shim/create-store')
 var extend = require('xtend')
 var ObservThunk = require('observ-thunk')
-var nextTick = require('next-tick')
 var partial = require('ap').partial
 var raf = require('raf')
 var cuid = require('cuid')
@@ -74,8 +73,7 @@ function input (state, data) {
 }
 
 function submit (state, data) {
-  // Ensure the vlaue has been updated from input events before broadcasting
-  nextTick(partial(SubmitEvent.broadcast, state, {}))
+  SubmitEvent.broadcast(state, {})
 }
 
 var defaults = {
@@ -94,8 +92,9 @@ Textarea.render = function render (state, options) {
     value: state.value,
     'textarea-load': AppendHook(state.events.load),
     'textarea-unload': RemoveHook(state.events.unload),
+    type: 'textarea',
     'ev-event': [
-      valueEvent(state.channels.input, {
+      changeEvent(state.channels.input, {
         name: options.name
       }),
       !options.enterSubmit ? noop : enterEvent(state.channels.submit)
