@@ -25,6 +25,7 @@ function Textarea (data) {
   data = data || {}
   var state = State({
     value: Value(data.value || ''),
+    height: Value(),
     channels: {
       input: input,
       submit: submit
@@ -35,14 +36,16 @@ function Textarea (data) {
     }
   })
 
-  var unlisten = state.value(ObservThunk(onChange))
-  store(state).dispose = dispose
+  state.value(ObservThunk(onChange))
 
   return state
 
   function onLoad (element) {
     store(state).element = element
+
     autosize(element)
+
+    element.addEventListener('autosize:resized', partial(onResize, element))
   }
 
   function onUnload (element) {
@@ -54,8 +57,9 @@ function Textarea (data) {
     raf(partial(autosize.update, element))
   }
 
-  function dispose () {
-    unlisten()
+  function onResize (element) {
+    var height = element.offsetHeight
+    state.height.set(height)
   }
 }
 
@@ -84,27 +88,23 @@ Textarea.render = function render (state, options) {
   options = extend(defaults, options || {})
 
   if (!options.name) {
-    options.name = 'textarea-' + cuid()
+    options.name = 'virtual-grow-textarea'
   }
 
   options = extend(options, {
+    style: {
+      height: state.height + 'px'
+    },
     name: options.name,
     value: state.value,
     'textarea-load': AppendHook(state.events.load),
     'textarea-unload': RemoveHook(state.events.unload),
     type: 'textarea',
-    'ev-event': [
-      changeEvent(state.channels.input, {
-        name: options.name
-      }),
-      !options.enterSubmit ? noop : enterEvent(state.channels.submit)
-    ]
+    'ev-input': changeEvent(state.channels.input, {
+      name: options.name
+    }),
+    'ev-keypress': !options.enterSubmit ? noop : enterEvent(state.channels.submit)
   })
 
   return h('textarea', options)
-}
-
-Textarea.dispose = function dispose (state) {
-  var dispose = store(state).dispose
-  if (dispose) dispose()
 }
