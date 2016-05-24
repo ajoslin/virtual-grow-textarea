@@ -13,7 +13,6 @@ var extend = require('xtend')
 var ObservThunk = require('observ-thunk')
 var partial = require('ap').partial
 var raf = require('raf')
-var cuid = require('cuid')
 var enterEvent = require('./enter-event')
 
 var store = WeakStore()
