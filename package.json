@@ -31,8 +31,7 @@
     "thermometer": "^1.4.0"
   },
   "files": [
-    "index.js",
-    "enter-event.js"
+    "*.js"
   ],
   "dependencies": {
     "ap": "^0.2.0",
