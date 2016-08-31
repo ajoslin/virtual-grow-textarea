@@ -57,7 +57,7 @@ function Textarea (data) {
   }
 
   function onResize (element) {
-    var height = element.offsetHeight
+    var height = parseInt(element.style.height, 10) || element.offsetHeight
     state.height.set(height)
   }
 }
